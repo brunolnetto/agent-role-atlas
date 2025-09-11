@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RoleProfileFrontmatter",
+  "description": "JSON Schema for validating YAML frontmatter in role profile.md files",
+  "type": "object",
+  "required": ["id", "slug", "name", "default_seniority"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "Unique identifier for the role (e.g., 'de-01')"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "URL-friendly role identifier (e.g., 'data-engineer')"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable role name (e.g., 'Data Engineer')"
+    },
+    "default_seniority": {
+      "type": "string",
+      "enum": ["Junior", "Mid", "Senior", "Staff", "Principal"],
+      "description": "Default seniority level for this role"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Optional role-specific properties (e.g., preferred_tech, workstyle)",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
